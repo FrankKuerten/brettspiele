@@ -1,6 +1,10 @@
-# brettspiele
-Brettspiele als WebApp auf CherryPy Server
+# Brettspiele
+=============
 
-Dieser CherryPy WebService stellt Brettspiele, derzeit Abalone und Quarto bereit.
-Die Spiele bieten eine Oberfläche, die mit JavaScript animiert ist.
-Der Server ist in Python implementiert. Benutzer und Partien werden in SQLite gespeichert.
+Brettspiele als WebService auf CherryPy Server
+
+Dieser WebService stellt Brettspiele bereit, derzeit Abalone und Quarto.
+Die Spiele bieten eine Oberfläche, die mit JavaScript animiert ist. Quarto wird mit
+Hilfe von http://threejs.org/ in 3D dargestellt.
+Der Server ist in Python mit Hilfe von http://www.cherrypy.org/ implementiert. 
+Benutzer und Partien werden in SQLite gespeichert.
