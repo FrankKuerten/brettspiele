@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+          "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+        <link rel=stylesheet type="text/css" href="/site.css">
+        <title>Spielbrett</title>
+        <script type="text/javascript" src="/Abalone/js/AbaloneInit.js"></script>
+        <script type="text/javascript" src="/Abalone/js/KugelClass.js"></script>
+        <script type="text/javascript" src="/Abalone/js/SpielfeldClass.js"></script>
+        <script type="text/javascript" src="/Abalone/js/ViewUtilities.js"></script>
+        <script type="text/javascript" src="/Abalone/js/ServerKommunikation.js"></script>
+    </head>
+    <body onLoad="init()">
+
+        <div id="Spieler" class="spielstand">
+            <form name="Standform" action="" method="post">
+                <table>
+                    <tr>
+                        <td class="schwarz">Schwarz:</td>
+                        <td class="schwarz">
+                            <input class="schwarz" 
+                                type="text" onFocus="this.blur();self.focus()" 
+                                name="nameSchwarz" size="20">
+                        </td>
+                        <td class="schwarz">
+                            <input class="schwarz" 
+                                type="text" onFocus="this.blur();self.focus()" 
+                                name="punkteSchwarz" size="1">
+                        </td>
+                        <td class="schwarz">
+                            <input class="schwarz" 
+                                type="text" onFocus="this.blur();self.focus()" 
+                                name="AmZugSchwarz" size="2">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="weiss">Weiss:</td>
+                        <td class="weiss">
+                            <input class="weiss" 
+                                type="text" onFocus="this.blur();self.focus()" 
+                                name="nameWeiss" size="20">
+                        </td>
+                        <td class="weiss">
+                            <input class="weiss" 
+                                type="text" onFocus="this.blur();self.focus()" 
+                                name="punkteWeiss" size="1">
+                        </td>
+                        <td class="weiss">
+                            <input class="weiss" 
+                                type="text" onFocus="this.blur();self.focus()" 
+                                name="AmZugWeiss" size="2">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+
+        <div align="right"><a href="/Anmeldung/">Neu Anmelden</a></div>
+        <div align="right"><a href="/Abalone/PartienAuswahl/">Andere Partie</a></div>
+        <div align="right"><a href="/Abalone/Hilfe.html" target="_blank">Hilfe</a></div>
+        <div id="starteReplay" align="right"><a href="javascript:starteReplayModus()">Partie nachspielen</a></div>
+        <div id="exitReplay" align="right"><a href="javascript:beendeReplayModus()">Zur&uuml;ck zur Partie</a></div>
+        <div id="Pfeil6" class="e1">
+            <a href="javascript:noop()" onClick="replayVorwaerts();return false" 
+            onMouseover="highlight(6, true)" onMouseout="highlight(6, false)">
+            <img src="/Abalone/PfeilN_6.gif" name="PfeilBild6" border="0" title="Einen Zug vorw&auml;rts" alt="vor"></a></div>
+        <div id="Pfeil7" class="e1">
+            <a href="javascript:noop()" onClick="replayZurueck();return false" 
+            onMouseover="highlight(7, true)" onMouseout="highlight(7, false)">
+            <img src="/Abalone/PfeilN_7.gif" name="PfeilBild7" border="0" title="Einen Zug zur&uuml;ck" alt="zurueck"></a></div>
+        <div id="Pfeil8" class="e1">
+            <a href="javascript:noop()" onClick="replayEnde();return false" 
+            onMouseover="highlight(8, true)" onMouseout="highlight(8, false)">
+            <img src="/Abalone/PfeilN_8.gif" name="PfeilBild8" border="0" title="Zum letzten Zug" alt="ende"></a></div>
+        <div id="Pfeil9" class="e1">
+            <a href="javascript:noop()" onClick="replayAnfang();return false" 
+            onMouseover="highlight(9, true)" onMouseout="highlight(9, false)">
+            <img src="/Abalone/PfeilN_9.gif" name="PfeilBild9" border="0" title="Zum ersten Zug" alt="anfang"></a></div>
+    
+        ## Und der Herr sprach: Es seien 28 Kugeln in Ebene 2 (oben), 14 f&uuml;r jeden Spieler!
+        #for $i in range(28):
+            <div id="Kugel${i}" class="e2">
+            <a href="javascript:noop()" onClick="kugel[${i}].angeklickt();return false">
+            ## ... und er trennte die silbernen von den schwarzen Kugeln und sah, dass es gut war
+            #if $i < 14:
+                <img src="/Abalone/ballsilber.gif"
+            #else:
+                <img src="/Abalone/ballschwarz.gif"
+            #end if
+             name="KugelBild${i}" border="0" alt="Kugel"></a>
+            </div>
+        #end for
+
+        ## ... und es sollen 61 Felder auf dem Spielbrett in Ebene 1 (unten) sein,
+        ## auf dass sich die Kugeln wohl ausrollen k&ouml;nnen!
+        #for $i in range(61):
+            <div id="Feld${i}" class="e1">
+            <img src="/Abalone/Feld.gif" name="FeldBild${i}" height="30" width="34" alt="Feld"></div>
+        #end for
+        
+        ## ... und die Kugeln sollen in alle 6 Himmelsrichtungen verschoben werden k&ouml;nnen
+        #for $i in range(6):
+            <div id="Pfeil${i}" class="e1">
+            <a href="javascript:noop()" onClick="ziehen(${i});return false" 
+            onMouseover="highlight(${i}, true)" onMouseout="highlight(${i}, false)">
+            <img src="/Abalone/PfeilN_${i}.gif" name="PfeilBild${i}" border="0" alt="Pfeil"></a></div>
+        #end for
+        ## &Auml;h, 6 Himmelsrichtungen? Schnauze, sprach der Herr, davon hast du keine Ahnung.
+        <noscript>
+        <p>
+        Diese Seite basiert auf JavaScript f&uuml;r die Darstellung der Spielpartien.
+        Sie haben JavaScript deaktiviert, oder Ihr Browser unterst&uuml;tzt kein JavaScript.
+        </p>
+        </noscript>
+    </body>
+</html>

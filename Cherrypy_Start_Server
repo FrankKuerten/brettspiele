@@ -1,0 +1,22 @@
+#!/bin/bash
+# Script zum Starten der Anwendung Abalone auf CherryPy-WebServer
+
+echo -n "Start im Internet (J): "
+read internet
+cd /home/frank/Python/BrettSpiele
+
+case $internet in [jJ] )
+    echo -n "Bitte das FTP-Passwort für frank-kuerten.de eingeben: "
+    read -s passwort
+    echo
+    # Upload der IP-Adresse
+    bash Upload_IP.sh $passwort
+esac
+
+# Start CherryPy
+python start.py
+
+case $internet in [jJ] )
+    # Upload des Hinweis 'Nicht verfügbar'
+    bash Upload_Sorry.sh $passwort
+esac

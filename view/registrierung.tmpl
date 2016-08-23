@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+          "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+        <link rel=stylesheet type="text/css" href="/site.css">
+        <title>Registrierung</title>
+        <script type="text/javascript" src="/js/RegistrierungValid.js"></script>
+    </head>
+    <body>
+
+        <h3>Registrierung</h3>
+        <p>
+	    Hier k&ouml;nnen Sie sich mit einem selbst definierten Namen registrieren,
+	    d.h. hier legen Sie fest, unter welchem Namen Sie die Spiele bestreiten.</p>
+	    <p>
+	    Bitte benutzen Sie zu Ihrer eigenen Sicherheit kein Passwort, welches Sie 
+	    bereits f&uuml;r andere Anwendungen
+	    verwenden (z.B. f&uuml;r Ihren Internet-Zugang oder Ihr Firmen-LAN)!</p>
+	    <p>
+	    Das Passwort m&uuml;ssen Sie zweimal eingeben, um Tippfehler zu vermeiden.
+	    Ihre Email-Adresse sollten Sie angeben, damit ich Sie erreichen kann, falls Sie
+	    Ihr Passwort vergessen, oder falls R&uuml;ckfragen zu Partien bestehen.</p>
+
+        <form method="post" action="registriere">
+            <table>
+                <tr>
+                    <td>Name:</td>
+                    <td>
+                        <input name="name" type="text" size="20" maxlength="20" value="$name">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Kennwort:</td>
+                    <td>
+                        <input name="passwort" type="password" size="20" maxlength="20" value="$passwort">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Kennwort wiederholen:</td>
+                    <td>
+                        <input name="passwortKopie" type="password" size="20" maxlength="20" value="$passwortKopie">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Email-Adresse:</td>
+                    <td>
+                        <input name="mailAdresse" type="text" size="40" maxlength="40" value="$mailAdresse">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Spiel:</td>
+                    <td>
+                        <select name="spiel" size="1">
+				<option value="Abalone" 
+				#if $spiel == "Abalone":
+					selected="selected"
+				#end if
+				>Abalone</option>
+				<option value="Quarto" 
+				#if $spiel == "Quarto":
+					selected="selected"
+				#end if
+				>Quarto</option>
+				</select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Registrieren"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><span class="meldung">$fehler</span></td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

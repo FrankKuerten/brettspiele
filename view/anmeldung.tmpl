@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+          "http://www.w3.org/TR/html4/strict.dtd">
+#encoding UTF-8
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+        <link rel=stylesheet type="text/css" href="/site.css">
+        <title>Anmeldung</title>
+    </head>
+    <body onload="checkFrame()">
+        <h3>Willkommen zu Abalone und Quarto</h3>
+        <p>
+        Diese Anwendung erm&ouml;glicht es Ihnen, mit Ihren (weit) entfernten 
+        Freunden per Internet eine Partie Abalone oder Quarto auszutragen. 
+        Ebenso einfach k&ouml;nnen Sie bei einer Partie zuschauen, die andere 
+        Benutzer gerade spielen.
+        </p>
+        <p>
+        Das Brettspiel Abalone wurde 1988 von den Franzosen Laurent Levi und
+        Michel Lalet erfunden. Das analoge Spiel ist im Verlag Parker Brothers erh&auml;ltlich.
+        </p>
+        <p>
+        Quarto wurde vom Schweizer Mathematiker Blaise M&uuml;ller erfunden. 
+        Das anfassbare Spiel ist im Verlag GiGamic k&auml;uflich zu erwerben.
+        </p>
+        <p>
+        Um aktiv an einem Spiel teilzunehmen, 
+        ist es erforderlich, sich mit einem frei w&auml;hlbaren Namen zu registrieren.
+        Als nicht registrierter Gast k&ouml;nnen Sie bei Partien zuschauen.
+
+        Falls Sie 30 Minuten nicht in dieser 
+        Anwendung aktiv sind, werden Sie zur Schonung der Server-Kapazit&auml;ten 
+        automatisch abgemeldet und landen bei der n&auml;chsten Eingabe wieder hier.
+        Eine Partie kann jederzeit unterbrochen und zu einem sp&auml;teren Zeitpunkt 
+        wieder aufgenommen werden.</p>
+
+        <p>Folgende M&ouml;glichkeiten stehen zur Auswahl:</p>
+        <ul>
+            <li>M&ouml;chten Sie sich jetzt <a href="/Registrierung/"> registrieren</a>?</li>
+            <li>Oder m&ouml;chten Sie sich die <a href="/Abalone/Spielregeln.html">Abalone Spielregeln durchlesen</a>?</li>
+            <li>Oder m&ouml;chten Sie sich die <a href="/Quarto/hilfe.html">Quarto Spielregeln durchlesen</a>?</li>
+            <li>Wenn Sie bereits registriert sind, k&ouml;nnen Sie sich hier anmelden:</li>
+        </ul>
+
+        <form method="post" name="Anmeldung" action="login">
+            <table>
+                <tr>
+                    <td>Spiel:</td>
+                    <td>
+                        <select name="spiel" size="1">
+				<option value="Abalone" 
+				#if $spiel == "Abalone":
+					selected="selected"
+				#end if
+				>Abalone</option>
+				<option value="Quarto" 
+				#if $spiel == "Quarto":
+					selected="selected"
+				#end if
+				>Quarto</option>
+			</select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Name:</td>
+                    <td>
+                        <input name="name" type="text" size="20" maxlength="20" value="$name">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Kennwort:</td>
+                    <td>
+                        <input name="passwort" type="password" size="20" value="$passwort">
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="submit" name="action" value="Anmelden"></input></td>
+                    <td><input type="submit" name="action" value="Als Gast Anmelden"></input></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><span class="meldung">$fehler</span></td>
+                </tr>
+            </table>
+        </form>
+        
+        <noscript>
+        <p>
+        Diese Seite verwendet JavaScript f&uuml;r die Darstellung der Spielpartien.<br>
+        Sie haben JavaScript deaktiviert, oder Ihr Browser unterst&uuml;tzt kein JavaScript.
+        </p>
+        </noscript>
+    </body>
+</html>

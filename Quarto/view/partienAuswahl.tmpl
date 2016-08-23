@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+          "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+        <link rel=stylesheet type="text/css" href="/site.css">
+        <title>Quarto Partie Auswahl</title>
+        <script type="text/javascript" src="/Quarto/js/PartieAuswahlValid.js"></script>
+    </head>
+    <body>
+        #if $ben.name == "Gast":
+        <h3>Welche Quarto Partie m&ouml;chten Sie anschauen?</h3>
+        <p>
+        Hier k&ouml;nnen Sie eine Partie ausw&auml;hlen,
+        deren Verlauf Sie sich anschauen k&ouml;nnen.</p>
+        <p>
+        Dazu suchen Sie ein Spiel mit einem Benutzernamen.
+        Mit der Checkbox &quot;Aktive Partien anzeigen&quot; k&ouml;nnen Sie 
+        (auch ohne einen Benutzernamen) alle noch nicht beendeten Partien suchen.
+        <p>
+        Aus der dann angezeigten Liste w&auml;hlen Sie eine 
+        Partie aus und &quot;Los geht's&quot;.</p>
+        <ul>
+            <li>Sie k&ouml;nnen sich hier <a href="/Anmeldung/">anmelden</a></li>
+            <li>Oder wollten Sie eine <a href="/Abalone/PartienAuswahl">Abalone Partie</a> ausw&auml;hlen?</li>
+            <li>Oder suchen Sie hier eine Partie:</li></ul>
+        #else:
+        <h3>Welche Quarto Partie m&ouml;chten Sie spielen?</h3>
+        <p>
+        Hier k&ouml;nnen Sie entweder eine neue Partie starten,
+        oder Sie k&ouml;nnen eine unterbrochene Partie weiterspielen.</p>
+        <p>
+        Zum Wiederaufnehmen eines Spiels suchen Sie nach einem Benutzernamen
+        (Ihr Name ist voreingestellt, kann aber mit jedem anderen &uuml;berschrieben werden).
+        Mit der Checkbox &quot;Aktive Partien anzeigen&quot; k&ouml;nnen Sie
+        (auch ohne einen Benutzernamen) alle noch nicht beendeten Partien suchen.
+        Aus der dann angezeigten Liste w&auml;hlen Sie eine Partie aus und &quot;Los geht's&quot;.</p>
+        
+        <p>Folgende M&ouml;glichkeiten stehen zur Auswahl:</p>
+        <ul>
+            <li>M&ouml;chten Sie jetzt eine neue Partie als <a href="neuePartieSchwarz">erster</a>
+            oder als <a href="neuePartieWeiss">zweiter</a> starten?</li>
+            <li>Oder wollten Sie eine <a href="/Abalone/PartienAuswahl">Abalone Partie</a> ausw&auml;hlen?</li>
+            <li>Oder m&ouml;chten Sie Ihr <a href="/ProfilAenderung/">Profil &auml;ndern</a>?</li>
+            <li>Oder suchen Sie hier eine Partie:</li>
+        </ul>
+        #end if
+            
+        <form method="post" action="suchePartie">
+            <table>
+                <tr>
+                    <td>Name:</td>
+                    <td>
+                        <input name="name" type="text" size="20" maxlength="20" value="$name">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Aktive Partien anzeigen:</td>
+                    <td>
+                        <input name="aktive" type="checkbox" 
+                        #if $aktive: 
+                            checked 
+                        #end if
+                        >
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Suche starten"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><span class="meldung">$fehler</span></td>
+                </tr>
+            </table>
+        </form>
+        
+        ## Ergebnisliste Partien
+        
+        #if len($partien) > 0:
+        <p>
+        <form method="post" action="waehlePartie" onSubmit="return validiere(this)">
+        
+        <p><input name="name" type="hidden" value="$name"></p>
+        
+        <table border="1" cellpadding="3" rules="all">
+            <tr>
+                <th rowspan="2">
+                    <input type="submit" value="Ausw&auml;hlen">
+                </th>
+                <th colspan="2">Spieler</th>
+                <th>Beendet</th>
+                <th rowspan="2">Startzeit</th>
+            </tr>
+            <tr>
+                <th>1</th>
+                <th>2</th>
+            </tr>
+            
+            #for $partie in $partien:
+            <tr>    
+                <td align="center"><input type="radio" name="partienummer" value="$partie.nummer"></td>    
+            
+                <td nowrap
+                    ## Benutzer ist angemeldet: mit CSS-Class angemeldet darstellen
+                    #if $partie.schwarz in $alleBenutzer:
+                        class="angemeldet"
+                    #end if
+                >    
+                    $partie.schwarz
+                </td>    
+                <td nowrap    
+                    ## Benutzer ist angemeldet: mit CSS-Class angemeldet darstellen
+                    #if $partie.weiss in $alleBenutzer:
+                        class="angemeldet"
+                    #end if
+                >    
+                    $partie.weiss
+                </td>
+		<td>
+                    #if $partie.beendet:
+                        Ja
+                    #else
+                        Nein
+                    #end if
+                </td>   
+                <td>    
+                    $partie.zeitGestartet
+                </td>    
+            </tr>
+            #end for
+        </p>
+        #end if
+        
+        </table>    
+        </form>    
+    </body>
+</html>

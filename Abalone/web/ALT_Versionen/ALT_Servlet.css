@@ -1,0 +1,22 @@
+h3 {	color:#0000ff
+}
+table {	background-color:#c0c0d0;
+	color:#000000;
+}
+th {	background-color:#b0b0c0;
+	color:#000000;
+}
+td {	background-color:#c0c0d0;
+	color:#000000;
+}
+td.angemeldet {	background-color:#c0c0d0;
+	color:#0000FF;
+}
+body {	background-color:#e0e0f0;
+	color:#FF0000;
+}
+.un {	border-style:solid;
+	border-width:thin;
+	border-color:#99CCFF;
+	padding:5px;
+}

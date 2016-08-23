@@ -1,0 +1,57 @@
+body {  background-color:#e0e0f0;
+        color:#000000;
+        margin-left:.5cm; 
+        margin-right:.5cm;
+        font-family:Verdana,Arial,sans-serif;
+        font-weight:normal;
+        font-size:11pt;
+}
+h1 {    font-weight:bold;
+        font-size:24pt;
+}
+h3 {    font-weight:bold;
+        font-size:13pt;
+}
+#p {     width:15cm;}
+table { background-color:#c0c0d0;
+        color:#000000;
+}
+th {    background-color:#b0b0c0;
+        color:#000000;
+}
+td {    background-color:#c0c0d0;
+        color:#000000;
+        font-family:Verdana,Arial,sans-serif;
+        font-weight:normal;
+        font-size:11pt;
+}
+div.e1 {position:absolute;
+        visibility:hidden;
+        top:0px;
+        left:0px;
+        z-index:1;
+}
+div.e2 {position:absolute;
+        visibility:hidden;
+        top:0px;
+        left:0px;
+        z-index:2;
+}
+div.spielstand {position:absolute;
+        visibility:visible;
+        z-index:1;
+        top:0px;
+        left:0px;
+}
+.meldung {color:#ff0000;
+        font-weight:bold;
+}
+.angemeldet {color:#0000ff;
+}
+.schwarz {background-color:#000000;
+        color:#ffffff;
+}
+.weiss {background-color:#ffffff;
+        color:#000000;
+}
+img {border:none }
