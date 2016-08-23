@@ -23,3 +23,9 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
+
+#CherryPy filesessions
+session-*
+
+#Wird bei jedem Start neu generiert
+content.html
