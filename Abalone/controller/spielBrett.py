@@ -29,7 +29,7 @@ class SpielBrett(AbstrakterController):
         ben = self.pruefeAngemeldet()
         partie = self.getSession().get("partie")
         partie = Partie.suchen(partie.nummer)
-        template = self.getTemplate("pollFrameJSON.tmpl")
+        template = self.getTemplate("spielStandJSON.tmpl")
 
         template.partie = partie
         template.benutzer = ben
