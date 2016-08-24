@@ -8,3 +8,5 @@ Hilfe von http://threejs.org/ in 3D dargestellt.
 Der Server ist in Python mit Hilfe von http://www.cherrypy.org/ implementiert. 
 Templates werden mit Cheetah aufbereitet.
 Benutzer und Partien werden in SQLite gespeichert.
+
+Eine aktuelle Implementierung befindet sich auf http://FrankKuerten.pythonanywhere.com
