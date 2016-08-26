@@ -28,6 +28,7 @@ function Brett(){
 				,[5, 6, 9, 10]);
 */
 	this.beendet = false;
+	this.unentschieden = true;
 
 	var istWeiss = false;
 	for (var x=0; x<4; x++){
@@ -118,6 +119,9 @@ function click(objId){
 				waehlbare.splice(i,1);
 			} 
 		}
+		if (waehlbare.length == 0){
+			this.beendet = true;
+		}
 	}
 	return erg;
 }
@@ -156,8 +160,13 @@ function zeigeSpielstand(spielzuege){
 	formular.nameSchwarz.value = nameSchwarz;
 	formular.nameWeiss.value = nameWeiss;
 	if (brett.beendet){
-		formular.AmZugSchwarz.value = (amZug == "s")?"***":"";
-		formular.AmZugWeiss.value = (amZug == "w")?"***":"";
+		if (brett.unentschieden){
+			formular.AmZugSchwarz.value = "remis";
+			formular.AmZugWeiss.value = "remis";
+		} else {
+			formular.AmZugSchwarz.value = (amZug == "s")?"***":"";
+			formular.AmZugWeiss.value = (amZug == "w")?"***":"";
+		}
 	} else {
 		formular.AmZugSchwarz.value = (amZug == "s")?"<-":"";
 		formular.AmZugWeiss.value = (amZug == "w")?"<-":"";
@@ -181,6 +190,7 @@ function pruefe(){
 		}
 		if (s.length == 4 && /[04]/.test(sum)){
 			this.beendet = true;
+			this.unentschieden = false;
 			this.zeigeGewinngruppe(s);
 		}
 	}
