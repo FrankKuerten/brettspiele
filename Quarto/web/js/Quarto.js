@@ -216,7 +216,12 @@ function onDocumentMouseMove( event ){
 	var schnipu = camera.position.clone().add( dir.multiplyScalar( distance ) );
 	
 	if ( schnipu != null ){
-		steinAusgewaehlt.mesh.position.set(schnipu.x, hoehe[steinAusgewaehlt.hoehe] / 2 ,schnipu.z);
+		var hst = hoehe[steinAusgewaehlt.hoehe] / 2;
+		// Zeigt die Maus auf ein Belegtes Feld? -> eine Etage höher anzeigen
+		if ( brett.belegtesFeld(schnipu.x, schnipu.z) ){
+			hst += 65;
+		}
+		steinAusgewaehlt.mesh.position.set(schnipu.x, hst ,schnipu.z);
 	}
 }
 

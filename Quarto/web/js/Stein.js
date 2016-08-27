@@ -18,7 +18,12 @@ function Stein(f, m, h, s){
 }
 
 function setFeld(feld){
+	// Alte Verbindung zum Rand lösen
+	if (this.feld != null){
+		this.feld.stein = null;
+	}
+	// Neue Verbindung setzen
 	this.feld = feld;
-	this.mesh.position.set(feld.xAbs, hoehe[this.hoehe] / 2, feld.zAbs);
 	feld.stein = this;
+	this.mesh.position.set(feld.xAbs, hoehe[this.hoehe] / 2, feld.zAbs);
 }

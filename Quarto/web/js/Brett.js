@@ -68,6 +68,7 @@ function Brett(){
 	this.zeigeGewinngruppe = zeigeGewinngruppe;
 	this.zeigeSchatten = zeigeSchatten;
 	this.zeigeSpielstand = zeigeSpielstand;
+	this.belegtesFeld = belegtesFeld;
 }
 
 function reset(){
@@ -205,4 +206,22 @@ function zeigeGewinngruppe(s){
 	var gwl = new THREE.Line(gwGeo, gwMat);
 	gewinnMarker.push(gwl);
 	scene.add(gwl);
+}
+
+// Zeigt die Maus auf ein belegtes Feld (auch Rand)?
+function belegtesFeld(x, z){
+	for (var i=0; i<this.felder.length; i++){
+		if (this.felder[i].stein != null &&
+			this.felder[i].istInFeld(x, z)){
+			return true;
+		}
+	}
+	for (var i=0; i<this.rand.length; i++){
+		if (this.rand[i].stein != null &&
+			this.rand[i].stein != steinAusgewaehlt &&
+			this.rand[i].istInFeld(x, z)){
+			return true;
+		}
+	}
+	return false;
 }
