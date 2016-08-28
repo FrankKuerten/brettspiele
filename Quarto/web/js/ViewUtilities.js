@@ -26,6 +26,11 @@ function beendeReplayModus(){
 
 function replayZug(nr){
     brett.reset();
+    if (nr % 4 == 0 || (nr + 1) % 4 == 0){
+        amZug = "s";
+    } else {
+        amZug = "w";
+    }
     brett.zeigeSpielstand(spielzuege, nr);
     initReplay();
 }
@@ -33,6 +38,9 @@ function replayZug(nr){
 function replayVorwaerts(){
     if (zugnr < maxzug){
         zugnr += zugnr % 2 == 0 ? 2 : 1;
+        if (zugnr > maxzug){
+            zugnr = maxzug;
+        }
         replayZug(zugnr);
     }
 }
@@ -80,10 +88,6 @@ function initReplay(){
 
 function ermittleDiv(id) {
     return document.getElementById(id);
-}
-
-function highlight(nr, high) {
-    document["PfeilBild"+nr].src = (high) ? pfeilHigh[nr].src : pfeilNorm[nr].src;
 }
 
 function sichtbar(div, istSichtbar) {
