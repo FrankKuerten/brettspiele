@@ -47,6 +47,7 @@ var partienummer = null;
 var zugnummer = null;
 var spielstand = null;
 var spielstandAlt = '';
+var spielzuege = null;
 var spieler = null;
 var amZug = null;
 var amZugAlt = null;
@@ -63,6 +64,7 @@ var maxzug = 0;
 init();
 animate();
 holeSpielstand();
+initReplay();
 
 // Szene mit Inhalten füllen  		
 function init() {
@@ -179,7 +181,7 @@ function onDocumentMouseDown( event ){
 	// (such as the mouse's TrackballControls)
 	// event.preventDefault();
 
-	if (brett.beendet || spieler != amZug){
+	if (brett.beendet || spieler != amZug || replay){
 		return;
 	}
 	
@@ -204,7 +206,7 @@ function onDocumentMouseMove( event ){
 	// (such as the mouse's TrackballControls)
 	// event.preventDefault();
 
-	if (brett.beendet || spieler != amZug || steinAusgewaehlt == null){
+	if (brett.beendet || spieler != amZug || steinAusgewaehlt == null || replay){
 		return;
 	}
 	

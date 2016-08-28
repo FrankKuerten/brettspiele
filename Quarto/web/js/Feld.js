@@ -10,6 +10,10 @@ function Feld(x, z, istRand, istWeiss){
 	this.xAbs = this.abs(x);
 	this.zAbs = this.abs(z);
 	this.istInFeld = istInFeld;
+	this.xMin = this.xAbs - 38;
+	this.xMax = this.xAbs + 38;
+	this.zMin = this.zAbs - 38;
+	this.zMax = this.zAbs + 38;
 	this.mesh = null;
 	if (!istRand){
 		this.mesh = new THREE.Mesh(feldGeo, (istWeiss ? feldMatW : feldMatS));
@@ -23,9 +27,6 @@ function abs(coord){
 }
 
 // Zeigt der Mauszeiger auf dieses Feld?
-function istInFeld(xf, zf){
-	return (xf >= (this.xAbs - 38) 
-		&& xf <= (this.xAbs + 38) 
-		&& zf >= (this.zAbs - 38)
-		&& zf <= (this.zAbs + 38));
+function istInFeld(x, z){
+	return (x >= this.xMin && x <= this.xMax && z >= this.zMin && z <= this.zMax);
 }

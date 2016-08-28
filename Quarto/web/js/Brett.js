@@ -144,11 +144,10 @@ function zeigeSchatten(sch){
 	material[1].needsUpdate = true;
 }
 
-function zeigeSpielstand(spielzuege){
-	var stand = eval(spielzuege)
+function zeigeSpielstand(spielzuege, bisZug){
 	var stein = true;
-	for (var i=0; i<stand.length; i++){
-		var j = stand[i];
+	for (var i=0; i<bisZug; i++){
+		var j = spielzuege[i];
 		if (stein){
 			this.click(this.steine[j].mesh.id);
 		} else {
@@ -215,8 +214,6 @@ function belegtesFeld(x, z){
 			this.felder[i].istInFeld(x, z)){
 			return true;
 		}
-	}
-	for (var i=0; i<this.rand.length; i++){
 		if (this.rand[i].stein != null &&
 			this.rand[i].stein != steinAusgewaehlt &&
 			this.rand[i].istInFeld(x, z)){

@@ -51,7 +51,9 @@ function callback(jsonText) {
     // Aktuellen Stand auf dem Brett anzeigen
     // ...nur bei Änderung, sonst zuckt ein drehender Stein
     if (spielstandAlt != spielstand){
-        brett.zeigeSpielstand(spielstand);
+    	spielzuege = eval(spielstand);
+    	maxzug = spielzuege.length;
+        brett.zeigeSpielstand(spielzuege, maxzug);
         spielstandAlt = spielstand;
     }
 

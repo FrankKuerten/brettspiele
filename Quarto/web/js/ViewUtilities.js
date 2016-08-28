@@ -1,12 +1,6 @@
 
 function noop() {}
 
-function ziehen(richtung) {
-
-    speichereZug();
-}
-
-
 function pruefeEnde() {
     brett.pruefe();
     istBeendet = brett.beendet;
@@ -18,37 +12,34 @@ function pruefeEnde() {
 function starteReplayModus(){
     clearTimeout(kiebitz);
     replay = true;
-    var formular = document.HoleStand;
-    formular.letzterZug.value = "False";
-    formular.submit();
+    zugnr = maxzug;
+    initReplay();
 }
 
 function beendeReplayModus(){
     replay = false;
     initReplay();
-    amZugAlt = "";
-    var formular = document.HoleStand;
-    formular.letzterZug.value = "True";
-    formular.submit();
+    // brett.reset();
+    spielstandAlt = '';
+    holeSpielstand();
 }
 
 function replayZug(nr){
-    self.focus();
-    amZug = (nr % 2 == 0) ? "s" : "w";
+    brett.reset();
+    brett.zeigeSpielstand(spielzuege, nr);
     initReplay();
-    zeigeSpielstand(spielzuege[nr]);
 }
 
 function replayVorwaerts(){
     if (zugnr < maxzug){
-        zugnr += 1;
+        zugnr += zugnr % 2 == 0 ? 2 : 1;
         replayZug(zugnr);
     }
 }
 
 function replayZurueck(){
     if (zugnr > 0){
-        zugnr -= 1;
+        zugnr -= zugnr % 2 == 0 ? 2 : 1;
         replayZug(zugnr);
     }
 }
@@ -63,6 +54,42 @@ function replayEnde(){
     replayZug(zugnr);
 }
 
+function initReplay(){
+    vor = ermittleDiv("vorwaerts");
+    rueck = ermittleDiv("zurueck");
+    ende = ermittleDiv("ende");
+    anfang = ermittleDiv("anfang");
+    rep = ermittleDiv("starteReplay");
+    exit = ermittleDiv("exitReplay");
+    sichtbar(vor, replay);
+    sichtbar(rueck, replay);
+    sichtbar(ende, replay);
+    sichtbar(anfang, replay);
+    sichtbar(exit, replay);
+    sichtbar(rep, !replay);
+    
+    if (zugnr >= maxzug){
+        sichtbar(vor, false);
+        sichtbar(ende, false);
+    }
+    if (zugnr <= 0){
+        sichtbar(rueck, false);
+        sichtbar(anfang, false);
+    }
+}
+
+function ermittleDiv(id) {
+    return document.getElementById(id);
+}
+
+function highlight(nr, high) {
+    document["PfeilBild"+nr].src = (high) ? pfeilHigh[nr].src : pfeilNorm[nr].src;
+}
+
+function sichtbar(div, istSichtbar) {
+    div.style.visibility = (istSichtbar) ? "visible" : "hidden";
+}
+
 function konvertiereHTML(text) {
 
     var ergebnis = text;
@@ -71,12 +98,12 @@ function konvertiereHTML(text) {
     ergebnis = ergebnis.replace(/</g,"&lt;");
     ergebnis = ergebnis.replace(/>/g,"&gt;");
     ergebnis = ergebnis.replace(/\"/g,"&quot;");
-    ergebnis = ergebnis.replace(/ä/g,"&auml;");
-    ergebnis = ergebnis.replace(/ö/g,"&ouml;");
-    ergebnis = ergebnis.replace(/ü/g,"&uuml;");
-    ergebnis = ergebnis.replace(/Ä/g,"&Auml;");
-    ergebnis = ergebnis.replace(/Ö/g,"&Ouml;");
-    ergebnis = ergebnis.replace(/Ü/g,"&Uuml;");
-    ergebnis = ergebnis.replace(/ß/g,"&szlig;");
+    ergebnis = ergebnis.replace(/Ã¤/g,"&auml;");
+    ergebnis = ergebnis.replace(/Ã¶/g,"&ouml;");
+    ergebnis = ergebnis.replace(/Ã¼/g,"&uuml;");
+    ergebnis = ergebnis.replace(/Ã„/g,"&Auml;");
+    ergebnis = ergebnis.replace(/Ã–/g,"&Ouml;");
+    ergebnis = ergebnis.replace(/Ãœ/g,"&Uuml;");
+    ergebnis = ergebnis.replace(/ÃŸ/g,"&szlig;");
     return ergebnis;
 }

@@ -29,17 +29,34 @@
 	</head>
 	<body>
 		<div class="info">
+            <table class="replay"><tr class="replay"><td class="replay">
+            <div id="anfang">
+                <a href="javascript:replayAnfang();"><img src="/Abalone/PfeilN_9.gif" border="0" title="Zum ersten Zug" alt="anfang"></a>
+            </div>
+            </td><td class="replay">
+			<div id="zurueck">
+                <a href="javascript:replayZurueck();"><img src="/Abalone/PfeilN_7.gif" border="0" title="Einen Zug zur&uuml;ck" alt="zurueck"></a>
+            </div>
+            </td><td class="replay">
+			<div id="vorwaerts">
+			    <a href="javascript:replayVorwaerts();"><img src="/Abalone/PfeilN_6.gif" border="0" title="Einen Zug vorw&auml;rts" alt="vor"></a>
+			</div>
+			</td><td class="replay">
+            <div id="ende">
+                <a href="javascript:replayEnde();"><img src="/Abalone/PfeilN_8.gif" border="0" title="Zum letzten Zug" alt="ende"></a>
+            </div>
+              </td>
+             </tr>
+            </table>
 			<a href="/Anmeldung/">Neu Anmelden</a><br/>
 			<a href="/Quarto/PartienAuswahl/">Andere Partie</a><br/>
 			<a href="/Quarto/hilfe.html" target="_blank">Hilfe</a><br/>
-<!--
 			<div id="starteReplay">
-				<a href="javascript:starteReplayModus()">Partie nachspielen</a>
+				<a href="javascript:starteReplayModus();">Partie nachspielen</a>
 			</div>
-		        <div id="exitReplay">
-				<a href="javascript:beendeReplayModus()">Zur&uuml;ck zur Partie</a>
+		    <div id="exitReplay">
+				<a href="javascript:beendeReplayModus();">Zur&uuml;ck zur Partie</a>
 			</div>
--->
 		</div>
 		<div id="Spieler" class="spielstand">
             <form name="Standform" action="" method="post">
@@ -75,7 +92,7 @@
         </div>
         
         <!-- Dieses Skript erzeugt eine neue canvas im body, daher nicht in den head verschiebbar -->
-		<script type="text/javascript" src="/Quarto/js/Quarto.js"></script>
+        <script type="text/javascript" src="/Quarto/js/Quarto.js"></script>
 				
 	</body>
 </html>
