@@ -18,49 +18,29 @@
         <p>
         Das Brettspiel Abalone wurde 1988 von den Franzosen Laurent Levi und
         Michel Lalet erfunden. Das analoge Spiel ist im Verlag Parker Brothers erh&auml;ltlich.
+        </br>Hier sind die <a href="/Abalone/Spielregeln.html">Abalone Spielregeln.</a>
         </p>
         <p>
         Quarto wurde vom Schweizer Mathematiker Blaise M&uuml;ller erfunden. 
         Das anfassbare Spiel ist im Verlag GiGamic k&auml;uflich zu erwerben.
+        </br>Dies sind die <a href="/Quarto/hilfe.html">Quarto Spielregeln.</a>
         </p>
         <p>
         Um aktiv an einem Spiel teilzunehmen, 
         ist es erforderlich, sich mit einem frei w&auml;hlbaren Namen zu registrieren.
         Als nicht registrierter Gast k&ouml;nnen Sie bei Partien zuschauen.
 
-        Falls Sie 30 Minuten nicht in dieser 
-        Anwendung aktiv sind, werden Sie zur Schonung der Server-Kapazit&auml;ten 
-        automatisch abgemeldet und landen bei der n&auml;chsten Eingabe wieder hier.
         Eine Partie kann jederzeit unterbrochen und zu einem sp&auml;teren Zeitpunkt 
         wieder aufgenommen werden.</p>
 
         <p>Folgende M&ouml;glichkeiten stehen zur Auswahl:</p>
         <ul>
-            <li>M&ouml;chten Sie sich jetzt <a href="/Registrierung/"> registrieren</a>?</li>
-            <li>Oder m&ouml;chten Sie sich die <a href="/Abalone/Spielregeln.html">Abalone Spielregeln durchlesen</a>?</li>
-            <li>Oder m&ouml;chten Sie sich die <a href="/Quarto/hilfe.html">Quarto Spielregeln durchlesen</a>?</li>
-            <li>Wenn Sie bereits registriert sind, k&ouml;nnen Sie sich hier anmelden:</li>
+            <li>Ich bin neu hier und m&ouml;chte mich jetzt <a href="/Registrierung/">registrieren</a></li>
+            <li>Ich bin bereits registriert:</li>
         </ul>
 
         <form method="post" name="Anmeldung" action="login">
             <table>
-                <tr>
-                    <td>Spiel:</td>
-                    <td>
-                        <select name="spiel" size="1">
-				<option value="Abalone" 
-				#if $spiel == "Abalone":
-					selected="selected"
-				#end if
-				>Abalone</option>
-				<option value="Quarto" 
-				#if $spiel == "Quarto":
-					selected="selected"
-				#end if
-				>Quarto</option>
-			</select>
-                    </td>
-                </tr>
                 <tr>
                     <td>Name:</td>
                     <td>
@@ -71,6 +51,23 @@
                     <td>Kennwort:</td>
                     <td>
                         <input name="passwort" type="password" size="20" value="$passwort">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Nach dem Anmelden will ich zu:</td>
+                    <td>
+                        <select name="spiel" size="1">
+							<option value="Abalone" 
+							#if $spiel == "Abalone":
+								selected="selected"
+							#end if
+							>Abalone</option>
+							<option value="Quarto" 
+							#if $spiel == "Quarto":
+								selected="selected"
+							#end if
+							>Quarto</option>
+						</select>
                     </td>
                 </tr>
                 <tr>

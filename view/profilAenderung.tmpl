@@ -20,7 +20,8 @@
 	    Ihre Email-Adresse sollten Sie angeben, damit ich Sie erreichen kann, falls Sie
 	    Ihr Passwort vergessen, oder falls R&uuml;ckfragen zu Partien bestehen.</p>
 	    
-	    <p>Falls Sie Ihre Daten nicht &auml;ndern m&ouml;chten, gelangen Sie hier zur <a href="/PartienAuswahl/">Partie Auswahl</a></p>
+	    <p>Ich m&ouml;chte meine Daten doch nicht &auml;ndern, sondern zur <a href="/PartienAuswahl/">Partien Auswahl</a></p>
+        <p>Ich m&ouml;chte meinen <a href="/ProfilAenderung/loescheBenutzer">Benutzer l&ouml;schen</a></p>
 
         <form method="post" action="aendereProfil">
             <table>
@@ -58,22 +59,21 @@
                     <td>Spiel:</td>
                     <td>
                         <select name="spiel" size="1">
-				<option value="Abalone" 
-				#if $spiel == "Abalone":
-					selected="selected"
-				#end if
-				>Abalone</option>
-				<option value="Quarto" 
-				#if $spiel == "Quarto":
-					selected="selected"
-				#end if
-				>Quarto</option>
-			</select>
+							<option value="Abalone" 
+							#if $spiel == "Abalone":
+								selected="selected"
+							#end if
+							>Abalone</option>
+							<option value="Quarto" 
+							#if $spiel == "Quarto":
+								selected="selected"
+							#end if
+							>Quarto</option>
+						</select>
                     </td>
                 </tr>
                 <tr>
                     <td><input type="submit" value="Profil &auml;ndern"></td>
-                    <td><input type="reset" value="Felder zur&uuml;cksetzen"></td>
                 </tr>
                 <tr>
                     <td colspan="2"><span class="meldung">$fehler</span></td>

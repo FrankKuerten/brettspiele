@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 
-import crypt
 import cherrypy
 from controller.abstrakterController import AbstrakterController
 
@@ -37,7 +36,7 @@ class ProfilAenderung(AbstrakterController):
             return self.index(passwort, passwortKopie, mailAdresse, fehler)
             
         if passwort != "":
-            ben.passwort = crypt.crypt(passwort, "AL")
+            ben.passwort = ben.cryptPasswort(passwort)
         
         ben.mailAdresse = mailAdresse
         
@@ -45,4 +44,16 @@ class ProfilAenderung(AbstrakterController):
         ben.speichern()
         self.getSession()['benutzer'] = ben
         self.getSession()['spiel'] = spiel
-        raise cherrypy.HTTPRedirect("/Abalone/PartienAuswahl/")
+        raise cherrypy.HTTPRedirect("/PartienAuswahl/")
+    
+    @cherrypy.expose    
+    def loescheBenutzer(self):
+        """
+        Prüft die Eingaben und navigiert wenn OK auf die Folgeseite
+        """
+        ben = self.pruefeAngemeldet()
+        
+        # Prüfungen OK
+        ben.loeschen()
+        self.getSession()['benutzer'] = 'Gast'
+        raise cherrypy.HTTPRedirect("/Anmeldung/")

@@ -65,6 +65,14 @@ class Benutzer():
         else:
             return False
         
+    def cryptPasswort(self, passwort):
+        """
+        Verschluesselt das uebergebene Passwort
+        
+        returns encrypted PW
+        """
+        return crypt.crypt(passwort, "AL")
+        
     def loeschen(self):
         """
         Loescht ein Objekt mit Key
