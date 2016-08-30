@@ -117,40 +117,8 @@ if __name__ == '__main__':
     conn.commit()
     conn.close()
     
-    b = Benutzer("Frank", "nicht geheim", "frank@frank-kuerten.de")
-    b.speichern()
-    b = Benutzer("F-rank", "geheim", "frank@frank-kuerten.de")
-    b.speichern()
-    b = Benutzer("Knarf", "streng geheim")
-    b.speichern()
-    liste = Benutzer.alleLesen()
-    for b in liste:
-        b.printMe()
-        
-    b = Benutzer.suchen("F-rank")
-    print "Suche F-rank" , b.printMe()
-    print "Passwort von F-rank:" , b.pruefePasswort("geheim")
-    print "Passwort von F-rank:" , b.pruefePasswort("alterHut")
-        
-    b = Benutzer.suchen("Knarf")
-    print "Suche Knarf" , b.printMe()
-    print "Loeschen von Knarf:" , b.loeschen()
-    b = Benutzer.suchen("Knarf")
-    print "Suche Knarf" , b
-    
-    b = Benutzer("Hammanit")
-    print "Nicht persistierter User Hammanit" , b
-    try:
-        print "Loeschen von Hammanit:" , b.loeschen()
-    except sqlite3.DBNotFoundError:
-        print "Objekt wurde nicht gefunden"
-
-    b = Benutzer.suchen("F-rank")
-    print "Suche F-rank" , b.printMe()
-    print "Loeschen von F-rank:" , b.loeschen()
-    print "Loeschen von Frank:" , b.loeschen()
     """
-    b = Benutzer.suchen("ULM")
-    b.passwort = crypt.crypt("ULM", "AL")
+    b = Benutzer.suchen("XYZ")
+    b.passwort = crypt.crypt("hier neues PW", "AL")
     b.speichern()
-    print "Update ULM" , b.printMe()
+    print "Update XYZ" , b.printMe()
