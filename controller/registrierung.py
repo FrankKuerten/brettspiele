@@ -50,7 +50,7 @@ class Registrierung(AbstrakterController):
             return self.index(name, passwort, passwortKopie, mailAdresse, fehler)
         
         # Prüfungen OK
-        ben = Benutzer(name, passwort)
+        ben = Benutzer(name, passwort, mailAdresse)
         ben.speichern()
         self.getSession()['benutzer'] = ben
         self.getSession()['spiel'] = spiel

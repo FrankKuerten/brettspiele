@@ -12,6 +12,12 @@ class ProfilAenderung(AbstrakterController):
         Seite wird mit Cheetah aufbereitet und ausgegeben
         """
         ben = self.pruefeAngemeldet()
+        
+        if ben.name.lower() == "gast" \
+        or ben.name.lower() == "admin":
+            fehler =  "Dieser Benutzername ist reserviert"
+            raise cherrypy.HTTPRedirect("/PartienAuswahl/")
+        
         template = self.getTemplate("profilAenderung.tmpl")
         template.passwort = passwort
         template.passwortKopie = passwortKopie
