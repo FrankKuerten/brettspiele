@@ -47,7 +47,7 @@ function positioniereDiv(div, pLeft, pTop) {
 
 function aendereBildgroesse(bildname, pBreite, pHoehe) {
 
-    // Nur für W3C-Browser (IE5, NN6, Opera5, Mozilla)
+    // Nur fÃ¼r W3C-Browser (IE5, NN6, Opera5, Mozilla)
     document[bildname].height = pHoehe;
     document[bildname].width = pBreite;
 }
@@ -65,10 +65,10 @@ function noop() {}
 
 function ziehen(richtung) {
 
-    // Einer der Richtungspfeile wurde gedrückt
+    // Einer der Richtungspfeile wurde gedrÃ¼ckt
 
     self.focus();            // entfernt den Focus-Rahmen im IE
-    if (spieler == "w") {        // Für den weissen Spieler ist das Brett gedreht!
+    if (spieler == "w") {        // FÃ¼r den weissen Spieler ist das Brett gedreht!
         richtung += (richtung > 2) ? -3 : 3;
     }
 
@@ -98,7 +98,7 @@ function plausiPfeile() {
         var istSichtbar = false;
 
         var richtung = j;
-        if (spieler == "w") {    // Für den weissen Spieler ist das Brett gedreht!
+        if (spieler == "w") {    // FÃ¼r den weissen Spieler ist das Brett gedreht!
             richtung += (richtung > 2) ? -3 : 3;
         }
 
@@ -239,13 +239,13 @@ function konvertiereHTML(text) {
     ergebnis = ergebnis.replace(/</g,"&lt;");
     ergebnis = ergebnis.replace(/>/g,"&gt;");
     ergebnis = ergebnis.replace(/\"/g,"&quot;");
-    ergebnis = ergebnis.replace(/ä/g,"&auml;");
-    ergebnis = ergebnis.replace(/ö/g,"&ouml;");
-    ergebnis = ergebnis.replace(/ü/g,"&uuml;");
-    ergebnis = ergebnis.replace(/Ä/g,"&Auml;");
-    ergebnis = ergebnis.replace(/Ö/g,"&Ouml;");
-    ergebnis = ergebnis.replace(/Ü/g,"&Uuml;");
-    ergebnis = ergebnis.replace(/ß/g,"&szlig;");
+    ergebnis = ergebnis.replace(/ï¿½/g,"&auml;");
+    ergebnis = ergebnis.replace(/ï¿½/g,"&ouml;");
+    ergebnis = ergebnis.replace(/ï¿½/g,"&uuml;");
+    ergebnis = ergebnis.replace(/ï¿½/g,"&Auml;");
+    ergebnis = ergebnis.replace(/ï¿½/g,"&Ouml;");
+    ergebnis = ergebnis.replace(/ï¿½/g,"&Uuml;");
+    ergebnis = ergebnis.replace(/ï¿½/g,"&szlig;");
     return ergebnis;
 }
 

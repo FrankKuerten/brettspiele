@@ -5,7 +5,6 @@
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
         <link rel=stylesheet type="text/css" href="/site.css">
         <title>Quarto Partie Auswahl</title>
-        <script type="text/javascript" src="/Quarto/js/PartieAuswahlValid.js"></script>
     </head>
     <body>
         #if $ben.name == "Gast":
@@ -77,17 +76,15 @@
         
         #if len($partien) > 0:
         <p>
-        <form method="post" action="waehlePartie" onSubmit="return validiere(this)">
+        <form method="post" action="waehlePartie">
         
         <p><input name="name" type="hidden" value="$name"></p>
         
         <table border="1" cellpadding="3" rules="all">
             <tr>
-                <th rowspan="2">
-                    <input type="submit" value="Ausw&auml;hlen">
-                </th>
+                <th rowspan="2">Ausw&auml;hlen</th>
                 <th colspan="2">Spieler</th>
-                <th>Beendet</th>
+                <th rowspan="2">Beendet</th>
                 <th rowspan="2">Startzeit</th>
             </tr>
             <tr>
@@ -97,7 +94,11 @@
             
             #for $partie in $partien:
             <tr>    
-                <td align="center"><input type="radio" name="partienummer" value="$partie.nummer"></td>    
+                <td align="center">
+                	<button type="submit" name="partienummer" value="$partie.nummer" >
+                		<img src="/Quarto/images/vorwaerts.png" width="16" height="16" />
+                	</button>
+                </td>    
             
                 <td nowrap
                     ## Benutzer ist angemeldet: mit CSS-Class angemeldet darstellen
@@ -115,7 +116,7 @@
                 >    
                     $partie.weiss
                 </td>
-		<td>
+                <td>
                     #if $partie.beendet:
                         Ja
                     #else
