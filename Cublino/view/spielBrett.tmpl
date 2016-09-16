@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+          "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Cublino</title>
+	        <link rel=stylesheet type="text/css" href="/site.css">
+		<style>
+			* {padding: 0;	margin: 0; font-family: Arial, sans-serif;}
+			body { margin: 0; font-size: 15px;}
+			canvas { width: 100%; height: 100% }
+			.info {position: absolute; left: 10px; bottom: 10px; text-align: left;}
+		</style>
+		<script type="text/javascript" src="/Cublino/js/Brett.js"></script>
+		<script type="text/javascript" src="/Cublino/js/Stein.js"></script>
+		<script type="text/javascript" src="/Cublino/js/Feld.js"></script>
+		<!--
+		<script type="text/javascript" src="/Quarto/js/ViewUtilities.js"></script>
+		<script type="text/javascript" src="/Quarto/js/ServerKommunikation.js"></script>
+		-->
+		
+		<script type="text/javascript" src="/js/three.min.js"></script>
+		<script type="text/javascript" src="/js/Detector.js"></script>
+		<script type="text/javascript" src="/js/CanvasRenderer.js"></script>
+		<script type="text/javascript" src="/js/Projector.js"></script>
+		<script type="text/javascript" src="/js/OrbitControls.js"></script>
+		<script type="text/javascript" src="/js/THREEx.KeyboardState.js"></script>
+		<script type="text/javascript" src="/js/THREEx.WindowResize.js"></script>
+		<script type="text/javascript" src="/js/ThreeCSG.js"></script>
+		
+	</head>
+	<body>
+	<!--
+		<div class="info">
+            <table class="replay"><tr class="replay"><td class="replay">
+            <div id="anfang">
+                <a href="javascript:replayAnfang();"><img src="/Quarto/images/anfang.png" border="0" title="Zum ersten Zug" alt="anfang"></a>
+            </div>
+            </td><td class="replay">
+			<div id="zurueck">
+                <a href="javascript:replayZurueck();"><img src="/Quarto/images/zurueck.png" border="0" title="Einen Zug zur&uuml;ck" alt="zurueck"></a>
+            </div>
+            </td><td class="replay">
+			<div id="vorwaerts">
+			    <a href="javascript:replayVorwaerts();"><img src="/Quarto/images/vorwaerts.png" border="0" title="Einen Zug vorw&auml;rts" alt="vor"></a>
+			</div>
+			</td><td class="replay">
+            <div id="ende">
+                <a href="javascript:replayEnde();"><img src="/Quarto/images/ende.png" border="0" title="Zum letzten Zug" alt="ende"></a>
+            </div>
+              </td>
+             </tr>
+            </table>
+			<a href="/Anmeldung/">Neu Anmelden</a><br/>
+			<a href="/Quarto/PartienAuswahl/">Andere Partie</a><br/>
+			<a href="/Quarto/hilfe.html" target="_blank">Hilfe</a><br/>
+			<div id="starteReplay">
+				<a href="javascript:starteReplayModus();">Partie nachspielen</a>
+			</div>
+		    <div id="exitReplay">
+				<a href="javascript:beendeReplayModus();">Zur&uuml;ck zur Partie</a>
+			</div>
+		</div>
+	-->
+		<div id="Spieler" class="spielstand">
+            <form name="Standform" action="" method="post">
+                <table class="replay">
+                    <tr class="replay">
+                        <td class="replay">Spieler 1</td>
+                        <td class="replay">
+                            <input 
+                                type="text" onFocus="this.blur();self.focus()" 
+                                name="nameSchwarz" size="20">
+                        </td>
+                        <td class="replay">
+                            <input 
+                                type="text" onFocus="this.blur();self.focus()" 
+                                name="AmZugSchwarz" size="3">
+                        </td>
+                    </tr>
+                    <tr class="replay">
+                        <td class="replay">Spieler 2</td>
+                        <td class="replay">
+                            <input 
+                                type="text" onFocus="this.blur();self.focus()" 
+                                name="nameWeiss" size="20">
+                        </td>
+                        <td class="replay">
+                            <input 
+                                type="text" onFocus="this.blur();self.focus()" 
+                                name="AmZugWeiss" size="3">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        
+        <!-- Dieses Skript erzeugt eine neue canvas im body, daher nicht in den head verschiebbar -->
+        <script type="text/javascript" src="/Cublino/js/Cublino.js"></script>
+				
+	</body>
+</html>

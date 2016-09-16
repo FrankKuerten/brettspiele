@@ -12,6 +12,7 @@ from Abalone.controller.partienAuswahl import PartienAuswahl as AbalonePartienAu
 from Abalone.controller.spielBrett import SpielBrett as AbaloneSpielBrett
 from Quarto.controller.partienAuswahl import PartienAuswahl as QuartoPartienAuswahl
 from Quarto.controller.spielBrett import SpielBrett as QuartoSpielBrett
+from Cublino.controller.spielBrett import SpielBrett as CublinoSpielBrett
 
 APPDIR = os.path.dirname(os.path.abspath(__file__))
 INI_FILENAME = os.path.join(APPDIR, "start.conf")
@@ -29,6 +30,8 @@ def main():
     root.Quarto = QuartoPartienAuswahl()
     root.Quarto.PartienAuswahl = QuartoPartienAuswahl()
     root.Quarto.SpielBrett = QuartoSpielBrett()
+    root.Cublino = CublinoSpielBrett()
+    root.Cublino.SpielBrett = CublinoSpielBrett()
 
     app = cherrypy.tree.mount(root, "/", INI_FILENAME)
 
