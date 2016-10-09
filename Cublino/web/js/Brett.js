@@ -10,8 +10,9 @@ function Brett(){
 
 	var istWeiss = false;
 	for (var x=0; x<7; x++){
+		this.felder.push([]);
 		for (var z=0; z<7; z++){
-			this.felder.push(new Feld(x, z, istWeiss));
+			this.felder[x].push(new Feld(x, z, istWeiss));
 			istWeiss = !istWeiss;
 		}
 	}
@@ -35,9 +36,10 @@ function Brett(){
 	mat.push(getAugenMat("r"));
 	mat.push(getAugenMat("b"));
 
-	for (var m=0; m<2; m++){
+	for (var f=0; f<2; f++){
+		this.steine.push([]);
 		for (var i=0; i<7; i++){
-			this.steine.push(new Stein(mat[m]));
+			this.steine[f].push(new Stein(mat[f], f));
 		}
 	}
 	this.reset = reset;
@@ -51,17 +53,15 @@ function Brett(){
 
 function reset(){
 	waehlbare = [];
-	var j;
-	for (var i=0; i<this.steine.length; i++){
-		// this.felder[i].stein = null;
-		if (i<7){
-			j = i;
-		} else {
-			j = i + 35;
+	for (var f=0; f<2; f++){
+		var j = f;
+		if (f == 1){
+			j = 6;
 		}
-		this.steine[i].setFeld(this.felder[j]);
-		waehlbare.push	(this.felder[i].mesh
-				,this.steine[i].mesh);
+		for (var i=0; i<7; i++){
+			this.steine[f][i].setFeld(this.felder[j][i]);
+			// waehlbare.push	(this.felder[j][i].mesh	,this.steine[f][i].mesh);
+		}
 	}
 	for (var i=0; i<gewinnMarker.length; i++){
 		scene.remove(gewinnMarker[i]);
@@ -114,12 +114,16 @@ function click(objId){
 function zeigeSchatten(sch){
 	renderer.shadowMap.enabled = sch;
 	sunLight.castShadow = sch;
-	for (var i=0; i<this.steine.length; i++){
-		this.steine[i].mesh.castShadow = sch;
-		this.steine[i].mesh.receiveShadow = sch;
+	for (var f=0; f<2; f++){
+		for (var i=0; i<7; i++){
+			this.steine[f][i].mesh.castShadow = sch;
+			this.steine[f][i].mesh.receiveShadow = sch;
+		}
 	}
-	for (var i=0; i<this.felder.length; i++){
-		this.felder[i].mesh.receiveShadow = sch;
+	for (var x=0; x<7; x++){
+		for (var z=0; z<7; z++){
+			this.felder[x][z].mesh.receiveShadow = sch;
+		}
 	}
 	sunLight.needsUpdate = true;
 	feldMatS.needsUpdate = true;

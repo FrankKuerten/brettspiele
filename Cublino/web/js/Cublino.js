@@ -244,14 +244,10 @@ function getWuerfel(sl){
 function getAugenMat(farbe){
 	var imagePrefix = "/images/wuerfelaugen-" + farbe + "s-";
 	var imageSuffix = "-g.png";
-	// var imagePrefix = "/images/wuerfelaugen-";
-	// var imageSuffix = ".png";
-	
-	var faceInd = [4, 3, 6, 1, 2, 5];
 	var materialArray = [];
 	for (var i = 0; i < 6; i++)
 		materialArray.push( new THREE.MeshBasicMaterial({
-			map: loader.load( imagePrefix + faceInd[i] + imageSuffix )
+			map: loader.load( imagePrefix + (i+1) + imageSuffix )
 		}));
 	var mat = new THREE.MeshFaceMaterial( materialArray );
 	mat.minFilter = THREE.NearestFilter;
