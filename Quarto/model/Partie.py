@@ -140,9 +140,9 @@ class Partie():
         """
         Gibt die Attribute aus 
         """
-        print "Partie-Nr.:", self.nummer, ",Schwarz:", self.schwarz, ", Weiss:", self.weiss
-        print ", beendet:", self.beendet, ", gestartet:", self.zeitGestartet
-        print self.zuege
+        print("Partie-Nr.:", self.nummer, ",Schwarz:", self.schwarz, ", Weiss:", self.weiss)
+        print(", beendet:", self.beendet, ", gestartet:", self.zeitGestartet)
+        print(self.zuege)
 
     @classmethod
     def mapRow(cls, row):
@@ -164,7 +164,7 @@ class Partie():
 
 if __name__ == '__main__':
 
-    print "Pfad" , Partie.dbpfad
+    print("Pfad" , Partie.dbpfad)
     """
     conn = sqlite3.connect(Partie.dbpfad)
     cur = conn.cursor()
@@ -200,9 +200,9 @@ if __name__ == '__main__':
     conn.text_factory = str
     cur = conn.cursor()
     for row in cur.execute("SELECT * FROM partie"):
-        print row
+        print(row)
     for row in cur.execute("SELECT * FROM zug"):
-        print row
+        print(row)
 
     conn.commit()
     conn.close()

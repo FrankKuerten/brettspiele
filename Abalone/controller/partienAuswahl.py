@@ -29,7 +29,7 @@ class PartienAuswahl(AbstrakterController):
         template.aktive = aktive
         alleBenutzer = self.alleSessionAttribute("benutzer")
         template.alleBenutzer = [b.name for b in alleBenutzer if b is not None]
-        # print template.alleBenutzer
+        # print(template.alleBenutzer)
         
         # Partie soll ausgewählt werden, evtl. alte entfernen
         try:

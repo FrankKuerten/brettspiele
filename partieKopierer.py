@@ -8,7 +8,7 @@ if __name__ == '__main__':
 
     liste = Partie.alleLesen()
     for b in liste:
-        print b.nummer, b.schwarz, b.weiss, b.punkteSchwarz, b.punkteWeiss, b.zeitGestartet, b.zuege
+        print(b.nummer, b.schwarz, b.weiss, b.punkteSchwarz, b.punkteWeiss, b.zeitGestartet, b.zuege)
         a = neu()
         a.nummer = b. nummer
         a.schwarz = b.schwarz

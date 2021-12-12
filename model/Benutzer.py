@@ -14,9 +14,9 @@ class Benutzer():
     dbpfad = os.path.join(os.path.dirname(__file__), "Benutzer.db")
     
     def __init__(self, name="", passwort="", mailAdresse="", datumAngelegt=datetime.datetime.now()):
-        self.name = name.encode()
-        self.passwort = crypt.crypt(passwort.encode(), "AL")
-        self.mailAdresse = mailAdresse.encode()
+        self.name = name
+        self.passwort = crypt.crypt(passwort)
+        self.mailAdresse = mailAdresse
         self.datumAngelegt = datumAngelegt
 
     def speichern(self):
@@ -71,7 +71,7 @@ class Benutzer():
         
         returns encrypted PW
         """
-        return crypt.crypt(passwort, "AL")
+        return crypt.crypt(passwort)
         
     def loeschen(self):
         """
@@ -87,7 +87,7 @@ class Benutzer():
         """
         Gibt die Attribute aus 
         """
-        print self.name, self.passwort, self.mailAdresse, self.datumAngelegt
+        print(self.name, self.passwort, self.mailAdresse, self.datumAngelegt)
 
     @classmethod        
     def sucheDB(cls, query, krit):
@@ -117,7 +117,7 @@ class Benutzer():
              
 if __name__ == '__main__':
 
-    print "Pfad" , Benutzer.dbpfad
+    print("Pfad" , Benutzer.dbpfad)
     conn = sqlite3.connect(Benutzer.dbpfad)  # @UndefinedVariable
     cur = conn.cursor()
     """
@@ -127,6 +127,6 @@ if __name__ == '__main__':
     
     """
     b = Benutzer.suchen("XYZ")
-    b.passwort = crypt.crypt("hier neues PW", "AL")
+    b.passwort = crypt.crypt("hier neues PW")
     b.speichern()
-    print "Update XYZ" , b.printMe()
+    print("Update XYZ" , b.printMe())
