@@ -154,9 +154,9 @@ class Partie():
         """
         Gibt die Attribute aus 
         """
-        print "Partie-Nr.:", self.nummer, ",Schwarz:", self.schwarz, ", Weiss:", self.weiss
-        print "Spielstand:", self.punkteSchwarz, " zu ", self.punkteWeiss, ", gestartet:", self.zeitGestartet
-        print self.zuege
+        print("Partie-Nr.:", self.nummer, ",Schwarz:", self.schwarz, ", Weiss:", self.weiss)
+        print("Spielstand:", self.punkteSchwarz, " zu ", self.punkteWeiss, ", gestartet:", self.zeitGestartet)
+        print(self.zuege)
 
     @classmethod
     def mapRow(cls, row):
@@ -178,7 +178,7 @@ class Partie():
 
 if __name__ == '__main__':
 
-    print "Pfad" , Partie.dbpfad
+    print("Pfad" , Partie.dbpfad)
     """
     conn = sqlite3.connect(Partie.dbpfad)
     cur = conn.cursor()
@@ -205,9 +205,9 @@ if __name__ == '__main__':
     conn.text_factory = str
     cur = conn.cursor()
     for row in cur.execute("SELECT * FROM partie"):
-        print row
+        print(row)
     for row in cur.execute("SELECT * FROM zug"):
-        print row
+        print(row)
 
     conn.commit()
     conn.close()
@@ -221,18 +221,18 @@ if __name__ == '__main__':
     # cur.execute("DELETE FROM zug WHERE partieNummer = 3")
 
     b = Partie.suchen(2)
-    print "Suche Partie 1" , b
+    print("Suche Partie 1" , b)
     b.printMe()
     b.fuegeZugHinzu("926436546607317427537647757808418528638748840050160270380431041151261371481542252362")
     b.printMe()
     
     b = Partie("x", "y")
     b.nummer = 42
-    print "Nicht persistierte Partie 42" , b
+    print("Nicht persistierte Partie 42" , b)
     try:
-        print "Loeschen von 42:" , b.loeschen()
+        print("Loeschen von 42:" , b.loeschen())
     except sqlite3.DBNotFoundError:
-        print "Objekt wurde nicht gefunden"
+        print("Objekt wurde nicht gefunden")
 
     liste2 = Partie.alleLesen()
     for b in liste2:
@@ -245,8 +245,8 @@ if __name__ == '__main__':
     conn = sqlite3.connect(Partie.dbpfad)
     cur = conn.cursor()
     for row in cur.execute("SELECT * FROM partie"):
-        print row
+        print(row)
     for row in cur.execute("SELECT * FROM zug"):
-        print row
+        print(row)
     conn.close()
     """
