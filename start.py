@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: UTF-8 -*-
-
 import os
 import cherrypy
 
@@ -15,7 +12,8 @@ from Quarto.controller.spielBrett import SpielBrett as QuartoSpielBrett
 
 APPDIR = os.path.dirname(os.path.abspath(__file__))
 INI_FILENAME = os.path.join(APPDIR, "start.conf")
-    
+
+
 def main():
     cherrypy.config.update(INI_FILENAME)
     root = Anmeldung()
@@ -37,6 +35,7 @@ def main():
     # cherrypy.server.start()
     cherrypy.engine.start()
     cherrypy.engine.block()
+
 
 if __name__ == "__main__":
     main()
