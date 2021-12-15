@@ -7,6 +7,7 @@ from controller.abstrakterController import AbstrakterController
 from model.Benutzer import Benutzer
 from Quarto.model.Partie import Partie as Partie
 
+
 class PartienAuswahl(AbstrakterController):
     
     APPDIR = os.path.dirname(os.path.abspath(__file__))
@@ -50,12 +51,12 @@ class PartienAuswahl(AbstrakterController):
             return self.index(name, aktive, "", liste)
         
         if name == "":
-            fehler =  "Bitte geben Sie einen Benutzernamen ein!"
+            fehler = "Bitte geben Sie einen Benutzernamen ein!"
             return self.index(name, aktive, fehler)
 
         ben = Benutzer.suchen(name)
         if ben is None:
-            fehler =  "Dieser Benutzer ist nicht registriert"
+            fehler = "Dieser Benutzer ist nicht registriert"
             return self.index(name, aktive, fehler)
             
         liste = Partie.sucheName(name)
@@ -69,7 +70,7 @@ class PartienAuswahl(AbstrakterController):
         ben = self.pruefeAngemeldet()
         
         if partienummer is None:
-            fehler =  "Bitte eine Zeile ausw&auml;hlen!"
+            fehler = "Bitte eine Zeile ausw&auml;hlen!"
             return self.index(name, aktive, fehler)
             
         partie = Partie.suchen(partienummer)
@@ -109,6 +110,6 @@ class PartienAuswahl(AbstrakterController):
             partie = Partie.neuePartie(ben.name, "")
         else:
             partie = Partie.neuePartie("", ben.name)
-        partie.speichern();
+        partie.speichern()
         self.getSession()["partie"] = partie
         raise cherrypy.HTTPRedirect("/Quarto/SpielBrett/")

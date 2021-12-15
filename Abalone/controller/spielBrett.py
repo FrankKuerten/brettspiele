@@ -6,6 +6,7 @@ import cherrypy
 from controller.abstrakterController import AbstrakterController
 from Abalone.model.Partie import Partie
 
+
 class SpielBrett(AbstrakterController):
 
     APPDIR = os.path.dirname(os.path.abspath(__file__))

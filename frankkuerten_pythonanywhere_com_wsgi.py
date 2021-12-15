@@ -1,6 +1,5 @@
 import os
 import sys
-sys.stdout = sys.stderr
 
 import atexit
 import cherrypy
@@ -14,6 +13,7 @@ from Abalone.controller.spielBrett import SpielBrett as AbaloneSpielBrett
 from Quarto.controller.partienAuswahl import PartienAuswahl as QuartoPartienAuswahl
 from Quarto.controller.spielBrett import SpielBrett as QuartoSpielBrett
 
+sys.stdout = sys.stderr
 APPDIR = os.getcwd()
 INI_FILENAME = os.path.join(APPDIR, "start.conf")
 

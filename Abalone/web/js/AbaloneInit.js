@@ -38,7 +38,7 @@
     }
     kugel = new Array(maxKugel);
     
-// Timer f¸r die Beobachtung des Spielstands, wenn man nicht am Zug ist    
+// Timer f√ºr die Beobachtung des Spielstands, wenn man nicht am Zug ist
     kiebitz = null;
     
 // SpielstandHoehe ist durch die Tabelle der Spieler und Punkte belegt
@@ -54,14 +54,14 @@
     nameSchwarz = null;
     istBeendet = false;
     
-// Diese Faktoren werden benˆtigt, um die Pfeile im Sechseck anzuordnen
+// Diese Faktoren werden ben√∂tigt, um die Pfeile im Sechseck anzuordnen
 // Die ersten 6 sind die Richtungspfeile im Spielmodus,
 // die letzten 4 sind die Pfeile im Replaymodus
     offx = new Array(1.7, 1.2, 0.5, 0, 0.5, 1.2, 1.2, 0.6, 1.8, 0);
     offy = new Array(2.5, 1.5, 1.5, 2.5, 3.6, 3.6, 2.5, 2.5, 2.5, 2.5);
 
 // Die Semaphore steuert, dass zu einer Zeit nur ein Thread 
-// in der function resize() l‰uft. Synchronized fehlt in JavaScript.
+// in der function resize() l√§uft. Synchronized fehlt in JavaScript.
     semaphore = false;
     window.onresize = resize;
     
@@ -71,7 +71,7 @@
     replay = false;
     maxzug = 0;
     
-// Konstante des Verh‰ltnis Hˆhe zu Seitenl‰nge eines Feldes
+// Konstante des Verh√§ltnis H√∂he zu Seitenl√§nge eines Feldes
     hKonst = Math.tan(Math.PI/6);
 
 function init() {
@@ -106,11 +106,11 @@ function ermittleFeldGroesse() {
     breiteAlt = breite;
     hoeheAlt = hoehe;
     
-    var ah = (hoehe - spielstandHoehe) / 15; // Seitenl‰nge eines Felds (von Hoehe abh.)
+    var ah = (hoehe - spielstandHoehe) / 15; // Seitenl√§nge eines Felds (von Hoehe abh.)
     var hh = ah / hKonst;                    // Hoehe eines Felds (von Hoehe abh.)
     var hb = breite / 11;                    // Hoehe eines Felds (von Breite abh.)
-    var ab = hb * hKonst;                    // Seitenl‰nge eines Felds (von Breite abh.)
-    if (ah < ab) {                           // je nach Verh‰ltnis Hoehe / Breite
+    var ab = hb * hKonst;                    // Seitenl√§nge eines Felds (von Breite abh.)
+    if (ah < ab) {                           // je nach Verh√§ltnis Hoehe / Breite
         a = ah;
         h = hh;
     } else {
@@ -129,7 +129,7 @@ function initSpielfelder() {
     var lfdnr = 0;
     for (var x=0; x<9; x++) {
 
-        var miny = (x>=4) ? 0 : 4-x;    // Grenzen f¸r wohlgeformte Felder
+        var miny = (x>=4) ? 0 : 4-x;    // Grenzen f√ºr wohlgeformte Felder
         var maxy = (x<=4) ? 8 : 12-x;
         var minz = (x<=4) ? 0 : x-4;
 

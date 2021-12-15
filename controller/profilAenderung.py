@@ -4,6 +4,7 @@
 import cherrypy
 from controller.abstrakterController import AbstrakterController
 
+
 class ProfilAenderung(AbstrakterController):
 
     @cherrypy.expose
@@ -13,9 +14,8 @@ class ProfilAenderung(AbstrakterController):
         """
         ben = self.pruefeAngemeldet()
         
-        if ben.name.lower() == "gast" \
-        or ben.name.lower() == "admin":
-            fehler =  "Dieser Benutzername ist reserviert"
+        if ben.name.lower() == "gast" or ben.name.lower() == "admin":
+            fehler = "Dieser Benutzername ist reserviert"
             raise cherrypy.HTTPRedirect("/PartienAuswahl/")
         
         template = self.getTemplate("profilAenderung.tmpl")
@@ -38,7 +38,7 @@ class ProfilAenderung(AbstrakterController):
         ben = self.pruefeAngemeldet()
 
         if passwort != passwortKopie:
-            fehler =  "Bitte geben Sie das Passwort ein zweites mal zur Kontrolle ein!"
+            fehler = "Bitte geben Sie das Passwort ein zweites mal zur Kontrolle ein!"
             return self.index(passwort, passwortKopie, mailAdresse, fehler)
             
         if passwort != "":

@@ -10,6 +10,7 @@ from vsgui.api import ask_passwd, ask_yesno
 from ftplib import FTP
 from Cheetah.Template import Template
 
+
 def main():
     os.chdir(sys.path[0])
     internet = ask_yesno('Start im Internet?', n='Nur lokal', y='Ja')
@@ -23,13 +24,15 @@ def main():
     # Start CherryPy
     try:
         call('./start.py')
-    except: pass
+    except:
+        pass
 
     if internet:
         # Upload des Hinweis 'Nicht verfügbar'
         transfer('sorry.html', passwort)
 
     sys.exit(0)
+
 
 def transfer(filename, pwd):
     ftp = FTP('frank-kuerten.de')
@@ -41,13 +44,15 @@ def transfer(filename, pwd):
     cont.close()
     ftp.quit()
 
+
 def makeContent():
     ip = requests.get('http://frank-kuerten.de/hello')
-    template = Template(file = os.path.join(sys.path[0],"content.tmpl"))
+    template = Template(file=os.path.join(sys.path[0], "content.tmpl"))
     template.ip = ip.text
 
-    with open('content.html','w') as html:
+    with open('content.html', 'w') as html:
         html.write(str(template))
+
 
 if __name__ == '__main__':
     main()

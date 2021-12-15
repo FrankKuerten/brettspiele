@@ -5,7 +5,8 @@ import datetime
 import os.path
 import sqlite3
 
-class Partie():
+
+class Partie:
     """
     Abalone Partie
     """
@@ -14,7 +15,7 @@ class Partie():
     dbpfad = os.path.join(os.path.dirname(__file__), "Partie.db")
     
     def __init__(self, nummer=None, schwarz="", weiss="", 
-                 punkteSchwarz=0, punkteWeiss=0, zeitGestartet=None ):
+                 punkteSchwarz=0, punkteWeiss=0, zeitGestartet=None):
         self.nummer = nummer
         self.schwarz = schwarz
         self.weiss = weiss
@@ -40,9 +41,9 @@ class Partie():
                     "INTO partie "
                     "(nummer, schwarz, weiss, punkteSchwarz, punkteWeiss, zeitGestartet) "
                     "VALUES (?,?,?,?,?,?)", 
-                    (self.nummer, self.schwarz, self.weiss, 
-                    self.punkteSchwarz, self.punkteWeiss, self.zeitGestartet, ))
-        if self.nummer == None:
+                    (self.nummer, self.schwarz, self.weiss,
+                     self.punkteSchwarz, self.punkteWeiss, self.zeitGestartet, ))
+        if self.nummer is None:
             self.nummer = cur.lastrowid
         cur.execute("INSERT OR REPLACE "
                     "INTO zug "
@@ -94,8 +95,8 @@ class Partie():
         """
         query = "SELECT * FROM partie WHERE punkteSchwarz < 6 AND punkteWeiss < 6"
         krit = []
-        if name != None and name != "":
-            query+=" AND (schwarz = ? OR weiss = ?)"
+        if name is not None and name != "":
+            query += " AND (schwarz = ? OR weiss = ?)"
             krit.append(name)
             krit.append(name)
         return Partie.sucheDB(query, krit)
@@ -141,8 +142,8 @@ class Partie():
         self.punkteWeiss = 0
         
         for i in range(1, len(zug), 3):
-            if zug[i] == '9': # y-Koordinate ist 9 -> Kugel ist aus
-                if i < 42:    # Magische Douglas-Adams-Konstante :D
+            if zug[i] == '9':  # y-Koordinate ist 9 -> Kugel ist aus
+                if i < 42:     # Magische Douglas-Adams-Konstante :D
                     self.punkteSchwarz += 1
                 else:
                     self.punkteWeiss += 1
@@ -176,9 +177,10 @@ class Partie():
         self.zuege.append(row["zug"])
         return self
 
+
 if __name__ == '__main__':
 
-    print("Pfad" , Partie.dbpfad)
+    print("Pfad", Partie.dbpfad)
     """
     conn = sqlite3.connect(Partie.dbpfad)
     cur = conn.cursor()
