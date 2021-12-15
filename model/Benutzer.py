@@ -5,7 +5,8 @@ import datetime
 import os.path
 import sqlite3
 
-class Benutzer():
+
+class Benutzer:
     """
     Registrierter Benutzer
     """
@@ -26,8 +27,8 @@ class Benutzer():
         if self.name != "":
             conn = sqlite3.connect(Benutzer.dbpfad)  # @UndefinedVariable
             cur = conn.cursor()
-            cur.execute("INSERT OR REPLACE INTO benutzer VALUES (?,?,?,?)", 
-                         (self.name, self.passwort, self.mailAdresse, self.datumAngelegt, ))
+            cur.execute("INSERT OR REPLACE INTO benutzer VALUES (?,?,?,?)",
+                        (self.name, self.passwort, self.mailAdresse, self.datumAngelegt, ))
             conn.commit()
             conn.close()
 
@@ -115,9 +116,10 @@ class Benutzer():
         b.passwort = row["passwort"]
         return b
              
+
 if __name__ == '__main__':
 
-    print("Pfad" , Benutzer.dbpfad)
+    print("Pfad", Benutzer.dbpfad)
     conn = sqlite3.connect(Benutzer.dbpfad)  # @UndefinedVariable
     cur = conn.cursor()
     """
@@ -129,4 +131,4 @@ if __name__ == '__main__':
     b = Benutzer.suchen("XYZ")
     b.passwort = crypt.crypt("hier neues PW")
     b.speichern()
-    print("Update XYZ" , b.printMe())
+    print("Update XYZ", b.printMe())

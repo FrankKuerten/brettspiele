@@ -16,7 +16,7 @@ function validiere(formular) {
 		return false;
 	}
 	if (formular.passwortNeu.value != formular.passwortKopie.value) {
-		alert("Kennworte müssen gleich sein!");
+		alert("Kennworte mÃ¼ssen gleich sein!");
 		formular.passwortKopie.focus();
 		formular.passwortKopie.select();
 		return false;

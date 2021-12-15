@@ -5,6 +5,7 @@ import os
 import cherrypy
 from controller.abstrakterController import AbstrakterController
 
+
 class PartienAuswahl(AbstrakterController):
     
     APPDIR = os.path.dirname(os.path.abspath(__file__))

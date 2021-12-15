@@ -8,9 +8,9 @@ function Kugel(div, farbe) {
     this.feld = null;        // 0..1 Assoziaton zum Spielfeldobjekt
 
     // Die Koordinaten x,y und z sind keine rechtwinkligen Koordinaten
-    // x gibt den Abstand vom linken, nach rechts unten schrägen Brettrand an.
+    // x gibt den Abstand vom linken, nach rechts unten schrÃ¤gen Brettrand an.
     // y gibt den Abstand vom oberen Brettrand an.
-    // z gibt den Abstand vom linken, nach rechts oben schrägen Brettrand an.
+    // z gibt den Abstand vom linken, nach rechts oben schrÃ¤gen Brettrand an.
 
     this.x = 0;
     this.y = 0;
@@ -33,7 +33,7 @@ function Kugel(div, farbe) {
 
 function positioniere(x, y, z) {
 
-    // Evtl. Kugel vom alten Platz löschen
+    // Evtl. Kugel vom alten Platz lï¿½schen
     if (this.feld != null && this.feld.kugel == this) {
         this.feld.kugel = null;
     }
@@ -150,7 +150,7 @@ function ermittleFeld() {
 
     var sfeld = this.feld;
 
-    if (spieler == "w") {    // Für den weissen Spieler ist das Brett gedreht
+    if (spieler == "w") {    // FÃ¼r den weiÃŸen Spieler ist das Brett gedreht
         var sx = 8 - this.x;
         var sy = 8 - this.y;
         var sz = 8 - this.z;
@@ -162,7 +162,7 @@ function ermittleFeld() {
 function schiebe(richtung) {
 
     // Verschiebe diese Kugel in eine der 6 Richtungen.
-    // Die Richtungen von 0 bis 5 sind die möglichen Zugrichtungen:
+    // Die Richtungen von 0 bis 5 sind die mÃ¶glichen Zugrichtungen:
     // 3 Uhr, 5 Uhr, 7 Uhr, 9 Uhr, 11 Uhr und 1 Uhr auf einem Zifferblatt. 
     // In Zugrichtung liegende Kugeln werden mit verschoben.
     // Vorher muss die Korrektheit des Zugs plausibilisiert sein.

@@ -5,7 +5,8 @@ import datetime
 import os.path
 import sqlite3
 
-class Partie():
+
+class Partie:
     """
     Quarto Partie
     """
@@ -13,7 +14,7 @@ class Partie():
     # Objekte werden im selben Verzeichnis gespeichert, wie das .py File
     dbpfad = os.path.join(os.path.dirname(__file__), "Partie.db")
     
-    def __init__(self, nummer=None, schwarz="", weiss="", zeitGestartet=None, beendet=0 ):
+    def __init__(self, nummer=None, schwarz="", weiss="", zeitGestartet=None, beendet=0):
         self.nummer = nummer
         self.schwarz = schwarz
         self.weiss = weiss
@@ -37,7 +38,7 @@ class Partie():
                     "(nummer, schwarz, weiss, zeitGestartet, beendet) "
                     "VALUES (?,?,?,?,?)", 
                     (self.nummer, self.schwarz, self.weiss, self.zeitGestartet, self.beendet, ))
-        if self.nummer == None:
+        if self.nummer is None:
             self.nummer = cur.lastrowid
         if len(self.zuege) > 0:
             cur.execute("INSERT OR REPLACE "
@@ -90,8 +91,8 @@ class Partie():
         """
         query = "SELECT * FROM partie WHERE beendet = 0"
         krit = []
-        if name != None and name != "":
-            query+=" AND (schwarz = ? OR weiss = ?)"
+        if name is not None and name != "":
+            query += " AND (schwarz = ? OR weiss = ?)"
             krit.append(name)
             krit.append(name)
         return Partie.sucheDB(query, krit)
@@ -162,9 +163,10 @@ class Partie():
         self.zuege.append(row["zug"])
         return self
 
+
 if __name__ == '__main__':
 
-    print("Pfad" , Partie.dbpfad)
+    print("Pfad", Partie.dbpfad)
     """
     conn = sqlite3.connect(Partie.dbpfad)
     cur = conn.cursor()

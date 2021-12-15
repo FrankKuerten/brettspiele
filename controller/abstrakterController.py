@@ -5,7 +5,8 @@ import os
 import cherrypy
 from Cheetah.Template import Template
 
-class AbstrakterController():
+
+class AbstrakterController:
 
     APPDIR = os.path.dirname(os.path.abspath(__file__))
     
@@ -100,4 +101,4 @@ class AbstrakterController():
         returns Template
         """
         filename = os.path.join(self.APPDIR, "../view/", viewname)
-        return Template(file = filename)
+        return Template(file=filename)
