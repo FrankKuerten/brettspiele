@@ -9,8 +9,9 @@ from Cheetah.Template import Template
 class AbstrakterController:
 
     APPDIR = os.path.dirname(os.path.abspath(__file__))
-    
-    def getSession(self):
+
+    @classmethod
+    def getSession(cls):
         """
         returns aktive session
         """
@@ -48,8 +49,9 @@ class AbstrakterController:
             return self.alleSessionAttributeFile(session, key)
             
         return []
-    
-    def alleSessionAttributeRam(self, session, key):
+
+    @classmethod
+    def alleSessionAttributeRam(cls, session, key):
         """
         Ermittelt alle angemeldeten Benutzernamen.
         Hierbei wird eine RamSession vorausgesetzt
@@ -67,7 +69,8 @@ class AbstrakterController:
             alleAttribute.append(obj)
         return alleAttribute
         
-    def alleSessionAttributeFile(self, session, key):
+    @classmethod
+    def alleSessionAttributeFile(cls, session, key):
         """
         Ermittelt alle angemeldeten Benutzernamen.
         Hierbei wird eine FileSession vorausgesetzt

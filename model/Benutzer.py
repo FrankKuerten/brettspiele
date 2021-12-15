@@ -65,8 +65,9 @@ class Benutzer:
             return True
         else:
             return False
-        
-    def cryptPasswort(self, passwort):
+
+    @classmethod
+    def cryptPasswort(cls, passwort):
         """
         Verschluesselt das uebergebene Passwort
         
