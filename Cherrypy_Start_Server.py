@@ -24,7 +24,8 @@ def main():
     # Start CherryPy
     try:
         call('./start.py')
-    except:
+    except Exception as ex:
+        print(ex)
         pass
 
     if internet:

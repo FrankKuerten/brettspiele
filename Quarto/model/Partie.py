@@ -31,7 +31,7 @@ class Partie:
         """
         Speichert das Objekt in db
         """
-        conn = sqlite3.connect(Partie.dbpfad)  # @UndefinedVariable
+        conn = sqlite3.connect(Partie.dbpfad)
         cur = conn.cursor()
         cur.execute("INSERT OR REPLACE "
                     "INTO partie "
@@ -105,9 +105,9 @@ class Partie:
         returns set
         """
         liste = []
-        with sqlite3.connect(Partie.dbpfad) as conn:  # @UndefinedVariable
+        with sqlite3.connect(Partie.dbpfad) as conn:
             conn.text_factory = str
-            conn.row_factory = sqlite3.Row  # @UndefinedVariable
+            conn.row_factory = sqlite3.Row
             cur1 = conn.cursor()
             cur2 = conn.cursor()
             zQuery = "SELECT * FROM zug WHERE partieNummer = ? ORDER BY zugNummer"
@@ -123,7 +123,7 @@ class Partie:
         Loescht ein Objekt mit Key
         Das Objekt muss vorher aus dbm ermittelt worden sein
         """
-        conn = sqlite3.connect(Partie.dbpfad)  # @UndefinedVariable
+        conn = sqlite3.connect(Partie.dbpfad)
         cur = conn.cursor()
         cur.execute("DELETE FROM partie WHERE nummer = ?", (self.nummer,))
         cur.execute("DELETE FROM zug WHERE zugNummer = ?", (self.nummer,))
@@ -198,7 +198,7 @@ if __name__ == '__main__':
     b.fuegeZugHinzu(6)
     b.fuegeZugHinzu(13)
     """
-    conn = sqlite3.connect(Partie.dbpfad)  # @UndefinedVariable
+    conn = sqlite3.connect(Partie.dbpfad)
     conn.text_factory = str
     cur = conn.cursor()
     for row in cur.execute("SELECT * FROM partie"):
