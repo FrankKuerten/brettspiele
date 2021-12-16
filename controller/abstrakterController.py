@@ -9,15 +9,13 @@ from Cheetah.Template import Template
 class AbstrakterController:
 
     APPDIR = os.path.dirname(os.path.abspath(__file__))
-    
-    def getSession(self):
+
+    @classmethod
+    def getSession(cls):
         """
-        Opfer an die PyDev Götter, um nicht jede Zeile 
-        mit # @UndefinedVariable dekorieren zu müssen.
-        
         returns aktive session
         """
-        return cherrypy.session  # @UndefinedVariable
+        return cherrypy.session
 
     def pruefeAngemeldet(self):
         """
@@ -26,11 +24,8 @@ class AbstrakterController:
         
         returns Benutzer
         """
-        try:
-            ben = self.getSession().get("benutzer")
-            if ben is None or ben.name is None or ben.name == "":
-                raise Exception()
-        except:
+        ben = self.getSession().get("benutzer")
+        if ben is None or ben.name is None or ben.name == "":
             raise cherrypy.HTTPRedirect("/Anmeldung/")
             
         return ben
@@ -54,8 +49,9 @@ class AbstrakterController:
             return self.alleSessionAttributeFile(session, key)
             
         return []
-    
-    def alleSessionAttributeRam(self, session, key):
+
+    @classmethod
+    def alleSessionAttributeRam(cls, session, key):
         """
         Ermittelt alle angemeldeten Benutzernamen.
         Hierbei wird eine RamSession vorausgesetzt
@@ -73,7 +69,8 @@ class AbstrakterController:
             alleAttribute.append(obj)
         return alleAttribute
         
-    def alleSessionAttributeFile(self, session, key):
+    @classmethod
+    def alleSessionAttributeFile(cls, session, key):
         """
         Ermittelt alle angemeldeten Benutzernamen.
         Hierbei wird eine FileSession vorausgesetzt

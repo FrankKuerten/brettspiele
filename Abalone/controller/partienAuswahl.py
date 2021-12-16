@@ -13,10 +13,12 @@ class PartienAuswahl(AbstrakterController):
     APPDIR = os.path.dirname(os.path.abspath(__file__))
 
     @cherrypy.expose
-    def index(self, name="", aktive=False, fehler="", partien=[]):
+    def index(self, name="", aktive=False, fehler="", partien=None):
         """
         Seite wird mit Cheetah aufbereitet und ausgegeben
         """
+        if partien is None:
+            partien = []
         ben = self.pruefeAngemeldet()
         template = self.getTemplate("partienAuswahl.tmpl")
         
@@ -41,7 +43,7 @@ class PartienAuswahl(AbstrakterController):
         return str(template)
 
     @cherrypy.expose    
-    def suchePartie(self, name="", aktive=False, fehler=""):
+    def suchePartie(self, name="", aktive=False):
         """
         Prüft die Eingaben und navigiert wenn OK auf die Folgeseite
         """

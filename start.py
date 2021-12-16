@@ -28,10 +28,10 @@ def main():
     root.Quarto.PartienAuswahl = QuartoPartienAuswahl()
     root.Quarto.SpielBrett = QuartoSpielBrett()
 
-    app = cherrypy.tree.mount(root, "/", INI_FILENAME)
+    cherrypy.tree.mount(root, "/", INI_FILENAME)
 
+    # app = cherrypy.tree.mount(root, "/", INI_FILENAME)
     # cherrypy.server.quickstart(app)
-    
     # cherrypy.server.start()
     cherrypy.engine.start()
     cherrypy.engine.block()

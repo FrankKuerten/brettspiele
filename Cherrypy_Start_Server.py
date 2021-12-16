@@ -14,6 +14,7 @@ from Cheetah.Template import Template
 def main():
     os.chdir(sys.path[0])
     internet = ask_yesno('Start im Internet?', n='Nur lokal', y='Ja')
+    passwort = ""
  
     if internet:
         passwort = ask_passwd('FTP-Passwort für frank-kuerten.de')
@@ -24,7 +25,8 @@ def main():
     # Start CherryPy
     try:
         call('./start.py')
-    except:
+    except Exception as ex:
+        print(ex)
         pass
 
     if internet:

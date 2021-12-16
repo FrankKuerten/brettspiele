@@ -24,7 +24,7 @@ class Registrierung(AbstrakterController):
         return str(template)
 
     @cherrypy.expose    
-    def registriere(self, name, passwort, passwortKopie, mailAdresse, spiel, fehler=""):
+    def registriere(self, name, passwort, passwortKopie, mailAdresse, spiel):
         """
         Prüft die Eingaben und navigiert wenn OK auf die Folgeseite
         """

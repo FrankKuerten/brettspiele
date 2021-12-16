@@ -15,7 +15,7 @@ class ProfilAenderung(AbstrakterController):
         ben = self.pruefeAngemeldet()
         
         if ben.name.lower() == "gast" or ben.name.lower() == "admin":
-            fehler = "Dieser Benutzername ist reserviert"
+            # Dieser Benutzername ist reserviert -> PartienAuswahl
             raise cherrypy.HTTPRedirect("/PartienAuswahl/")
         
         template = self.getTemplate("profilAenderung.tmpl")

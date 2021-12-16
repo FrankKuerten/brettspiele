@@ -25,7 +25,7 @@ class Benutzer:
         Speichert das Objekt in db
         """
         if self.name != "":
-            conn = sqlite3.connect(Benutzer.dbpfad)  # @UndefinedVariable
+            conn = sqlite3.connect(Benutzer.dbpfad)
             cur = conn.cursor()
             cur.execute("INSERT OR REPLACE INTO benutzer VALUES (?,?,?,?)",
                         (self.name, self.passwort, self.mailAdresse, self.datumAngelegt, ))
@@ -65,8 +65,9 @@ class Benutzer:
             return True
         else:
             return False
-        
-    def cryptPasswort(self, passwort):
+
+    @classmethod
+    def cryptPasswort(cls, passwort):
         """
         Verschluesselt das uebergebene Passwort
         
@@ -78,7 +79,7 @@ class Benutzer:
         """
         Loescht ein Objekt mit Key
         """
-        conn = sqlite3.connect(Benutzer.dbpfad)  # @UndefinedVariable
+        conn = sqlite3.connect(Benutzer.dbpfad)
         cur = conn.cursor()
         cur.execute("DELETE FROM benutzer WHERE name = ?", (self.name,))
         conn.commit()
@@ -98,8 +99,8 @@ class Benutzer:
         returns set
         """
         liste = []
-        with sqlite3.connect(Benutzer.dbpfad) as conn:  # @UndefinedVariable
-            conn.row_factory = sqlite3.Row  # @UndefinedVariable
+        with sqlite3.connect(Benutzer.dbpfad) as conn:
+            conn.row_factory = sqlite3.Row
             cur = conn.cursor()
             for row in cur.execute(query, krit):
                 b = Benutzer.mapRow(row)
@@ -120,15 +121,16 @@ class Benutzer:
 if __name__ == '__main__':
 
     print("Pfad", Benutzer.dbpfad)
-    conn = sqlite3.connect(Benutzer.dbpfad)  # @UndefinedVariable
-    cur = conn.cursor()
+    main_conn = sqlite3.connect(Benutzer.dbpfad)
+    main_cur = main_conn.cursor()
     """
-    cur.execute("CREATE TABLE benutzer (name text unique, passwort text, mailAdresse text, datumAngelegt timestamp)")
-    conn.commit()
-    conn.close()
+    main_cur.execute("CREATE TABLE benutzer (name text unique, 
+        passwort text, mailAdresse text, datumAngelegt timestamp)")
+    main_conn.commit()
+    main_conn.close()
     
     """
-    b = Benutzer.suchen("XYZ")
-    b.passwort = crypt.crypt("hier neues PW")
-    b.speichern()
-    print("Update XYZ", b.printMe())
+    main_b = Benutzer.suchen("XYZ")
+    main_b.passwort = crypt.crypt("hier neues PW")
+    main_b.speichern()
+    print("Update XYZ", main_b.printMe())

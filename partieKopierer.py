@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 
-from model.Partie import Partie
+# from model.Partie import Partie
 from Abalone.model.Partie import Partie as neu
                      
 if __name__ == '__main__':
 
-    liste = Partie.alleLesen()
+    liste = []  # Partie.alleLesen()
     for b in liste:
         print(b.nummer, b.schwarz, b.weiss, b.punkteSchwarz, b.punkteWeiss, b.zeitGestartet, b.zuege)
         a = neu()

@@ -11,7 +11,7 @@ class PartienAuswahl(AbstrakterController):
     APPDIR = os.path.dirname(os.path.abspath(__file__))
 
     @cherrypy.expose
-    def index(self, name="", aktive=False, fehler="", partien=[]):
+    def index(self):
         """
         Seite wird mit Cheetah aufbereitet und ausgegeben
         """
