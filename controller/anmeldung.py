@@ -27,7 +27,7 @@ class Anmeldung(AbstrakterController):
         return str(template)
     
     @cherrypy.expose
-    def login(self, spiel, name, passwort, action, fehler=""):
+    def login(self, spiel, name, passwort, action):
         """
         Prüft die Eingaben und navigiert wenn OK auf die Folgeseite
         """

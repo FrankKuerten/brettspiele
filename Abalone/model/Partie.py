@@ -203,16 +203,16 @@ if __name__ == '__main__':
     b = Partie.neuePartie("F-rank", "Frank")
     b = Partie.neuePartie("Frank", "Hammanimi")
     """
-    conn = sqlite3.connect(Partie.dbpfad)
-    conn.text_factory = str
-    cur = conn.cursor()
-    for row in cur.execute("SELECT * FROM partie"):
-        print(row)
-    for row in cur.execute("SELECT * FROM zug"):
-        print(row)
+    main_conn = sqlite3.connect(Partie.dbpfad)
+    main_conn.text_factory = str
+    main_cur = main_conn.cursor()
+    for main_row in main_cur.execute("SELECT * FROM partie"):
+        print(main_row)
+    for main_row in main_cur.execute("SELECT * FROM zug"):
+        print(main_row)
 
-    conn.commit()
-    conn.close()
+    main_conn.commit()
+    main_conn.close()
 
     liste1 = Partie.alleLesen()
     for b in liste1:

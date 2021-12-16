@@ -121,15 +121,16 @@ class Benutzer:
 if __name__ == '__main__':
 
     print("Pfad", Benutzer.dbpfad)
-    conn = sqlite3.connect(Benutzer.dbpfad)
-    cur = conn.cursor()
+    main_conn = sqlite3.connect(Benutzer.dbpfad)
+    main_cur = main_conn.cursor()
     """
-    cur.execute("CREATE TABLE benutzer (name text unique, passwort text, mailAdresse text, datumAngelegt timestamp)")
-    conn.commit()
-    conn.close()
+    main_cur.execute("CREATE TABLE benutzer (name text unique, 
+        passwort text, mailAdresse text, datumAngelegt timestamp)")
+    main_conn.commit()
+    main_conn.close()
     
     """
-    b = Benutzer.suchen("XYZ")
-    b.passwort = crypt.crypt("hier neues PW")
-    b.speichern()
-    print("Update XYZ", b.printMe())
+    main_b = Benutzer.suchen("XYZ")
+    main_b.passwort = crypt.crypt("hier neues PW")
+    main_b.speichern()
+    print("Update XYZ", main_b.printMe())
